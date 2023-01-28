@@ -1,0 +1,63 @@
+{
+  "results": [
+    {
+      "title": "Honda Civic 2018",
+      "price": 123,
+      "color": "Grey",
+      "gearbox": "4",
+      "fuel": "4L",
+      "brand": "Honda",
+      "path": "../../assets/car1.jpg"
+    },
+    {
+       "title": "Land Rover Evoque 2016",
+        "price": 223,
+     "color": "Grey",
+     "gearbox": "6",
+       "fuel": "19L",
+       "brand": "Land Rover",
+       "path": "../../assets/car2.jpg"
+    },
+    {
+       "title": "Mercedes Benz SLS 2019",
+      "price": 203,
+      "color": "Red",
+      "gearbox": "5",
+      "fuel": "6L",
+      "brand": "Mercedes",
+      "path": "../../assets/car3.jpg"
+    },
+{
+
+"title": "Audi A6 2018",
+      "price": 190,
+      "color": "Grey",
+      "gearbox": "5",
+      "fuel": "6L",
+      "brand": "Audi",
+      "path": "../../assets/car4.jpg"
+},
+{
+
+  "title": "Jaguar XF 2019",
+      "price": 200,
+      "color": "White",
+      "gearbox": "6",
+      "fuel": "10L",
+      "brand": "Jaguar",
+      "path": "../../assets/car5.jpg"
+},
+{
+ "title": "BMW E-1 2018",
+      "price": 123,
+      "color": "Grey",
+      "gearbox": "6",
+      "fuel": "6L",
+      "brand": "BMW",
+      "path": "../../assets/car6.jpg"
+
+
+}
+
+  ]
+}

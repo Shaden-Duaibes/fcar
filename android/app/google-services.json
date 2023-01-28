@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "389371374873",
+    "project_id": "car-rentale",
+    "storage_bucket": "car-rentale.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389371374873:android:b079afe66d8f61fac9e988",
+        "android_client_info": {
+          "package_name": "com.example.flcar1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389371374873-rec34iatrv2339864icrk757jiq6tsbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDPhqWFxALF4Kz_iqIL741L1f8xGRR8dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389371374873-rec34iatrv2339864icrk757jiq6tsbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389371374873:android:5d19dd5599beefb5c9e988",
+        "android_client_info": {
+          "package_name": "com.example.untitled5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389371374873-rec34iatrv2339864icrk757jiq6tsbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDPhqWFxALF4Kz_iqIL741L1f8xGRR8dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389371374873-rec34iatrv2339864icrk757jiq6tsbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
