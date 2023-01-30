@@ -7,7 +7,7 @@
       "gearbox": "4",
       "fuel": "4L",
       "brand": "Honda",
-      "path": "../../assets/car1.jpg"
+      "path": "assets/car1.jpg"
     },
     {
        "title": "Land Rover Evoque 2016",
@@ -16,7 +16,7 @@
      "gearbox": "6",
        "fuel": "19L",
        "brand": "Land Rover",
-       "path": "../../assets/car2.jpg"
+       "path": "assets/car2.jpg"
     },
     {
        "title": "Mercedes Benz SLS 2019",
@@ -25,7 +25,7 @@
       "gearbox": "5",
       "fuel": "6L",
       "brand": "Mercedes",
-      "path": "../../assets/car3.jpg"
+      "path": "assets/car3.jpg"
     },
 {
 
@@ -35,7 +35,7 @@
       "gearbox": "5",
       "fuel": "6L",
       "brand": "Audi",
-      "path": "../../assets/car4.jpg"
+      "path": "assets/car4.jpg"
 },
 {
 
@@ -45,7 +45,7 @@
       "gearbox": "6",
       "fuel": "10L",
       "brand": "Jaguar",
-      "path": "../../assets/car5.jpg"
+      "path": "assets/car5.jpg"
 },
 {
  "title": "BMW E-1 2018",
@@ -54,7 +54,7 @@
       "gearbox": "6",
       "fuel": "6L",
       "brand": "BMW",
-      "path": "../../assets/car6.jpg"
+      "path": "assets/car6.jpg"
 
 
 }

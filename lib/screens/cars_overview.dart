@@ -1,6 +1,7 @@
 import 'package:flcar1/utils/utils.dart';
 import 'package:flutter/material.dart';
 import '../contact.dart';
+//import '../fair.dart';
 import '../fair.dart';
 import '../main.dart';
 import '../utils/utils.dart';
@@ -48,7 +49,7 @@ class CarsOverviewScreen extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.add),
+                leading: const Icon(Icons.book_online),
                 title: const Text(
                   'About fair',
                 ),
@@ -58,7 +59,7 @@ class CarsOverviewScreen extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.report),
+                leading: const Icon(Icons.contact_mail),
                 title: const Text(
                   'Contact us',
                 ),

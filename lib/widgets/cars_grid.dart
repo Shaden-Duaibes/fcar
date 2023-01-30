@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flcar1/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../screens/car_detail.dart';
 
 class CarsGrid extends StatefulWidget {
@@ -11,9 +12,8 @@ class CarsGrid extends StatefulWidget {
 class _CarsGridState extends State<CarsGrid> {
   //null safety error handling by inserting empty list
   List<dynamic> _carList = [];
-  void _getcar() async {
-    String peopleString = await DefaultAssetBundle.of(context)
-        .loadString('../../assets/cars.json');
+  Future<void> _getcar() async {
+    String peopleString = await rootBundle.loadString('assets/cars.json');
     dynamic jsonData = json.decode(peopleString);
     if (mounted)
       setState(() {
@@ -40,28 +40,29 @@ class _CarsGridState extends State<CarsGrid> {
   }
 
   Widget _showcar() {
-    return GridView.builder(
+    return Container(
+        child: GridView.builder(
       physics: ScrollPhysics(),
       shrinkWrap: true,
       itemCount: _carList.length,
-      itemBuilder: (ctx, i) => Padding(
+      itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (ctx) => CarDetail(
-                      title: _carList[i]['title'],
-                      brand: _carList[i]['brand'],
-                      fuel: _carList[i]['fuel'],
-                      price: _carList[i]['price'],
-                      path: _carList[i]['path'],
-                      gearbox: _carList[i]['gearbox'],
-                      color: _carList[i]['color'],
+                      title: _carList[index]['title'],
+                      brand: _carList[index]['brand'],
+                      fuel: _carList[index]['fuel'],
+                      price: _carList[index]['price'],
+                      path: _carList[index]['path'],
+                      gearbox: _carList[index]['gearbox'],
+                      color: _carList[index]['color'],
                     )));
           },
           child: Container(
               margin: EdgeInsets.only(
-                  top: i.isEven ? 0 : 20, bottom: i.isEven ? 20 : 0),
+                  top: index.isEven ? 0 : 20, bottom: index.isEven ? 20 : 0),
               decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   boxShadow: [
@@ -71,13 +72,14 @@ class _CarsGridState extends State<CarsGrid> {
               child: Column(
                 children: [
                   Hero(
-                      tag: _carList[i]['color'],
-                      child: Image.asset(_carList[i]['path'])),
+                      tag: Text('bt2'),
+                      child: Image.asset(_carList[index]['path'])),
                   Text(
-                    _carList[i]['title'],
+                    _carList[index]['title'],
                     style: BasicHeading,
                   ),
-                  Text((_carList[i]['price']).toString(), style: SubHeading),
+                  Text((_carList[index]['price']).toString(),
+                      style: SubHeading),
                   Text('per month')
                 ],
               )),
@@ -85,6 +87,6 @@ class _CarsGridState extends State<CarsGrid> {
       ),
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-    );
+    ));
   }
 }

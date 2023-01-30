@@ -35,10 +35,22 @@ class _LoginDemoState extends State<LoginDemo> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _nameController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _nameController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    } on FirebaseAuthException catch (error) {
+      print(error.message);
+    }
+  }
+
+  void initState() {
+    super.initState();
+    Firebase.initializeApp().whenComplete(() {
+      print("completed");
+      setState(() {});
+    });
   }
 
   String _email = '';
@@ -186,6 +198,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     if (_formKey.currentState!.validate()) {
                       const SnackBar(content: Text('Processing Data'));
                       _formKey.currentState!.save();
+                      signIn();
                       Auth();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (ctx) => CarsOverviewScreen()));

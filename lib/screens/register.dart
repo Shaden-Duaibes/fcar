@@ -1,143 +1,176 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
-
-  @override
-  State<Register> createState() => _RegisterState();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 }
 
-bool drop = false;
-
-class _RegisterState extends State<Register> {
-  final _key = GlobalKey<FormState>();
+/*class HomeScreen extends StatelessWidget {
+  final Stream<QuerySnapshot> users =
+      FirebaseFirestore.instance.collection('users').snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        elevation: 6,
-        title: Text("Book a car"),
-        centerTitle: true,
+        title: Text('Firebase demo'),
       ),
-      body: Container(
-          width: 900,
-          margin: EdgeInsets.all(50),
-          color: Colors.blueGrey,
-          child: Form(
-            key: _key,
-            child: Column(
-              children: [
-                Padding(padding: EdgeInsets.all(10)),
-                Text("Please fill this form to book the car.",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                    )),
-                Padding(padding: EdgeInsets.all(18)),
-                Form(
-                    child: Column(
-                  children: [
-                    ConstrainedBox(
-                        constraints: const BoxConstraints.tightFor(width: 490),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 3, color: Colors.white)),
-                              hintText: "Your Location",
-                              label: Text(
-                                "Location",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              icon: Icon(
-                                Icons.map,
-                                color: Colors.white,
-                              )),
-                        )),
-                    Row(
-                      children: [
-                        Padding(padding: EdgeInsets.fromLTRB(165, 40, 50, 40)),
-                        Checkbox(value: drop, onChanged: ((value) {})),
-                        Text("Drop/Pick up at home ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 21,
-                            )),
-                        Text(" 100 Nis extra ",
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                    ConstrainedBox(
-                        constraints: const BoxConstraints.tightFor(width: 490),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 3, color: Colors.white)),
-                              hintText: "From",
-                              label: Text(
-                                "Pickup Date",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              icon: Icon(
-                                Icons.date_range,
-                                color: Colors.white,
-                              )),
-                        )),
-                    Padding(padding: EdgeInsets.all(30)),
-                    ConstrainedBox(
-                        constraints: const BoxConstraints.tightFor(width: 490),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 3, color: Colors.white)),
-                              hintText: "To",
-                              label: Text(
-                                "Return Date",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              icon: Icon(
-                                Icons.date_range,
-                                color: Colors.white,
-                              )),
-                        )),
-                    Padding(padding: EdgeInsets.all(30)),
-                    ConstrainedBox(
-                        constraints: const BoxConstraints.tightFor(width: 490),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 3, color: Colors.white)),
-                              hintText: "Phone number",
-                              label: Text(
-                                "Phone number",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              icon: Icon(
-                                Icons.phone,
-                                color: Colors.white,
-                              )),
-                          keyboardType: TextInputType.number,
-                        )),
-                    ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(
-                            fontSize: 20.0,
-                          ),
-                        ))
-                  ],
-                ))
-              ],
-            ),
-          )),
+      body: Padding(
+          padding: EdgeInsets.all(2),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('Read Data From Cloud Fire Store',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
+            Container(
+                height: 250,
+                padding: EdgeInsets.symmetric(vertical: 20),
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: users,
+                    builder: (
+                      BuildContext context,
+                      AsyncSnapshot<QuerySnapshot> snapshot,
+                    ) {
+                      if (snapshot.hasError) return Text('Error has occurred');
+                      if (snapshot.connectionState == ConnectionState.waiting)
+                        return Text('loading');
+                      final data = snapshot.requireData;
+                      return ListView.builder(
+                          itemCount: data.size,
+                          itemBuilder: (context, index) {
+                            return Text(
+                                'My name is ${data.docs[index]['location']} ,my Age is ${data.docs[index]['date']}, my phone is ${data.docs[index]['number']}');
+                          });
+                    })),
+          ])),
     );
+  }
+}*/
+
+class MyCustomForm extends StatefulWidget {
+  @override
+  State<MyCustomForm> createState() => _MyCustomFormState();
+}
+
+class _MyCustomFormState extends State<MyCustomForm> {
+  @override
+  final _formKey = GlobalKey<FormState>();
+  var location = '';
+  var date = '';
+  var to = '';
+  var number = '';
+  Widget build(BuildContext context) {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Rental'),
+          backgroundColor: Colors.blue,
+        ),
+        body: Container(
+            alignment: AlignmentDirectional.center,
+            child: Center(
+                child: Form(
+                    key: _formKey,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: 100,
+                          ),
+                          TextFormField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                                suffixIcon: Icon(Icons.place_outlined),
+                                hintText: 'What is your location',
+                                labelText: 'location',
+                              ),
+                              onChanged: (value) {
+                                location = value;
+                              },
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Please enter your location';
+                                }
+                                return null;
+                              }),
+                          SizedBox(height: 15),
+                          TextFormField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50)),
+                              suffixIcon: Icon(Icons.date_range),
+                              hintText: 'Enter your date',
+                              labelText: 'date',
+                            ),
+                            onChanged: (value) {
+                              date = value;
+                            },
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                                suffixIcon: Icon(Icons.date_range),
+                                hintText: 'Enter your date',
+                                labelText: 'date to',
+                              ),
+                              onChanged: (value) {
+                                to = value;
+                              },
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Please enter your date to';
+                                }
+                                return null;
+                              }),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50)),
+                                suffixIcon: Icon(Icons.phone_android),
+                                hintText: 'What is your phone number',
+                                labelText: 'Phone Number',
+                              ),
+                              onChanged: (value) {
+                                number = value;
+                              },
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Please enter your Phone Number';
+                                }
+                                return null;
+                              }),
+                          SizedBox(height: 10),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  users
+                                      .add({
+                                        'location': location,
+                                        'date': date,
+                                        'to': to,
+                                        'number': number,
+                                      })
+                                      .then((value) => print('user added'))
+                                      .catchError(
+                                          (error) => print('Error happened'));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                          content: Text(
+                                              'Sending data to Firebase')));
+                                }
+                              },
+                              child: Text('Submit'),
+                            ),
+                          )
+                        ])))));
   }
 }

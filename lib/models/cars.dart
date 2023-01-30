@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class CarItem {
   final String title;
-  final double price;
+  final num price;
   final String path;
   final String color;
   final String gearbox;
@@ -10,13 +10,13 @@ class CarItem {
   final String brand;
 
   CarItem(
-      {@required this.title,
-      @required this.price,
-      @required this.path,
-      @required this.color,
-      @required this.gearbox,
-      @required this.fuel,
-      @required this.brand});
+      {required this.title,
+      required this.price,
+      required this.path,
+      required this.color,
+      required this.gearbox,
+      required this.fuel,
+      required this.brand});
 }
 
 CarsList allCars = CarsList(cars: [
@@ -73,5 +73,5 @@ CarsList allCars = CarsList(cars: [
 class CarsList {
   List<CarItem> cars;
 
-  CarsList({this.cars});
+  CarsList({required this.cars});
 }

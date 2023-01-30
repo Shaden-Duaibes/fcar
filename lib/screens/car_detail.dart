@@ -6,7 +6,7 @@ import '../widgets/specific_card.dart';
 
 class CarDetail extends StatelessWidget {
   final String title;
-  final double price;
+  final num price;
   final String color;
   final String gearbox;
   final String fuel;
@@ -33,7 +33,7 @@ class CarDetail extends StatelessWidget {
           ],
         ),
         body: Container(
-            color: Colors.limeAccent,
+            color: Colors.white,
             child: Column(children: [
               Text(title, style: MainHeading),
               Text(
@@ -95,12 +95,12 @@ class CarDetail extends StatelessWidget {
                 onTap: () {},
                 child: ElevatedButton(
                   onPressed: (() => {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (ctx) => Register())),
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => MyCustomForm())),
                       }),
                   child: Text(
                     'Book Now',
-                    style: TextStyle(fontSize: 20, color: Colors.blueAccent),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ),
               ),
